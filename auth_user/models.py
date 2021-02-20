@@ -1,8 +1,8 @@
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
+from django.contrib.auth.hashers import make_password
 
-
-class CustomUserManager(BaseUserManager):
+class CustomUserManager(UserManager):
     """Менеджер пользователей."""
     def create_user(self, email, password=None, **extra_fields):
         """
@@ -16,6 +16,8 @@ class CustomUserManager(BaseUserManager):
             email=self.normalize_email(email),
             **extra_fields
         )
+        if password:
+            user.password = make_password(password)
         user.save(using=self._db)
         return user
 
@@ -24,6 +26,10 @@ class CustomUserManager(BaseUserManager):
         Создает объект суперпользвателя с указанным адресом
         электронной почты, датой рождения и паролем.
         """
+
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
         user = self.create_user(
             email,
             password=password,
