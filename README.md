@@ -1,11 +1,11 @@
 Service Yamdb
 =================================
 
-A service – databases of reviewing films, books, music and REST API for it( is made in a team with my
-colleagues)
+In a team with my colleagues we have written service – databases of reviewing films, books, music and
+REST API for it. My role included registration and authentication system, access rights, work with a token, e-mail confirmation system, fields.
 
-Tools:  Django Rest Framework, ModelViewSet, routers, JSON Web Token, Authorization, Users Roles,
-Postman, SQLite3
+Tech stack: Python3, Django, HTML, HTTP, HTTPS, SQLite3, Git, Linux, Visual Studio
+Code, Nginx, Docker.
 
 Getting Started
 ===============
